@@ -118,6 +118,8 @@ export class TaskPrioritiesComponent implements OnInit {
         console.log(error);
       });
     }
+// 
+    // <
   }
 
   onEditClick(event: any, taskPriority: TaskPriority) {
