@@ -1,0 +1,220 @@
+<nav aria-label="breadcrumb" style="background-color:whitesmoke;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">DashBoard</li>
+    </ol>
+</nav>
+
+<!--  -->
+<!-- <h6>{{ToDay|date:"dd-MMM-yyyy"}}</h6> -->
+<div class="row">
+    <div class="col-6">
+        <h5>Dashboard</h5>
+    </div>
+    <div class="col-6">
+        <P STYLE="text-align:right;">{{ToDay|date:"dd-MMM-yyyy"}}</P>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3 pb-3" style="background-color:#e9e6e6;">
+        <div class="row">
+            <div class="col-11 text-white text-center mx-auto rounded pt-2 pv-2 font-weight-bold"
+                style="background-color:#a39e9e;font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif">
+                {{Designation|uppercase}}
+            </div>
+
+            <div class="col-12 text-center mt-2">
+                <img src="assets/user.png" width="120px" alt="img not found">
+            </div>
+
+            <div class="col-12 text-center pt-2 pb-2 font-weight-bold" style="font-family: tahoma;">
+                {{Username | lowercase}}
+            </div>
+
+            <div class="col-12 text-center pt-2 pb-2 font-weight-bold" style="font-family: Arial;">Team Summary</div>
+            <div class="col-12 mb-3">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center ">NO.OF TEAM MEMBERS
+                        <span class="badge bg-secondary" style="font-size: 13px;">{{NoOfTeamMembers}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center ">Total Cost Of All
+                        Project
+                        <span class="badge bg-secondary" style="font-size: 13px;">{{TotalCostOfAllProjects}}k</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center ">Pending Tasks
+                        <span class="badge bg-secondary" style="font-size: 13px;">{{PendingTasks}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center ">UpComing Projects
+                        <span class="badge bg-secondary" style="font-size: 13px;">{{UpComingProjects|percent}}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-12 pb-2 pt-2 text-center" style="font-family: Arial Narrow;">Clients
+                <div class="col-12">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="text-align: left;" *ngFor="let temp of Clients">{{temp | slice:0:10}}</li>
+                    </ul>
+                    <!-- {{TeamMembersSummary}} -->
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-12 pt-0 pb-0" style="background-color:#e9e6e6">
+                <div class="row mt-2">
+                    <div class="col-6 text-left">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Project A
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" *ngFor="let project of Projects" onclick="return false" (click)="onProjectChange($event)">{{project}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-6 " style="text-align:right;">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle text-right" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                2022
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a class="dropdown-item" href="#" *ngFor="let year of Years">
+                                      <span [ngSwitch]="year">
+                                            <span *ngSwitchCase=" '2022'" style="color: green;">{{year}}</span>
+                                            <span *ngSwitchCase=" '2021'" style="color: blue;">{{year}}</span>
+                                            <span *ngSwitchCase=" '2020'" style="color: red;">{{year}}</span>
+
+                                            <span *ngSwitchDefault style="color: black;">{{year}}</span>
+                                        </span> 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 font-weight-bold rounded"
+                style="background-color:#718d97; font-family:arial Narrow">
+                PROJECT BREFING
+            </div>
+
+            <div class="col-12">
+                <table class="table table-borderless mt-3">
+                    <tr>
+                        <td>Project Cost </td>
+                        <td style="text-align:right">{{ProjectCost|currency:"INR"}} </td>
+
+                    </tr>
+                    <tr>
+                        <td>Current Expenditure </td>
+                        <td style="text-align:right">{{CurrentExpenditure|currency:"INR"}} </td>
+                    </tr>
+                    <tr>
+                        <td>Available Funds </td>
+                        <td style="text-align:right">{{AvailableFunds|currency:"INR"}} </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 font-weight-bold rounded"
+                style="background-color:#718d97; font-family:arial Narrow">
+                TEAM MEMBER SUMMARY
+            </div>
+            <DIV class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Region</th>
+                            <th>Team Members Count</th>
+                            <th>Temporarily Unavailable Members</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let t of TeamMembersSummary">
+                            <td><b>{{t.Region}}</b></td>
+                            <td>{{t.TeamMembersCount}}</td>
+                            <td>{{t.TemporarilyUnavailableMembers}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </DIV>
+
+        </div>
+    </div>
+    <div class="col-lg-3" style="background-color: #e9e6e6;">
+        <div class="row">
+            <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 font-weight-bold rounded"
+                style="background-color:#718d97; font-family:arial Narrow">
+                TEAM MEMBERS
+            </div>
+            <div class="col-lg-12 pt-2">
+
+                <div class="accordion" id="accordionexample">
+                    <div class="card" *ngFor="let t of TeamMembers,let i=index" >
+                    <!-- <div *ngIf="i!=0"> -->
+                        <div class="card-header bg-secondary" id="card1">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-white " type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]=" '#cardbody' +i">{{t.Region}}</button>
+                            </h2>
+                        </div>
+                        <div [id]=" 'cardbody' +i" class="collapse" data-bs-parent="#accordionexample" [ngClass]="(i==0)? 'show':'hide' ">
+                            <div class="card-body">
+                                <div *ngIf="i==0;then firstTemplate;else secondTemplate">                                    
+
+                                </div>
+                                <ng-template #firstTemplate>
+                                    <div class="card" *ngFor="let m of t.Members">
+                                        <div class="card-header bg-primary text-white">
+                                            {{m.ID}} {{m.Name}}
+                                        </div>
+                                        <div class="card-body" [style.color]="(m.Status=='Busy')? 'red':'black'">
+                                            {{m.Status}}
+                                        </div>
+
+                                    </div>
+                                </ng-template>
+                                <ng-template #secondTemplate>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let m of t.Members">
+                                                <td>{{m.ID}}</td>
+                                                <td>{{m.Name}}</td>
+                                                <td [style.color]="(m.Status=='Busy')? 'red':'black'">{{m.Status}}</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+
+                                </ng-template>
+                                
+                            </div>
+
+                        </div>
+                    <!-- </div> -->
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

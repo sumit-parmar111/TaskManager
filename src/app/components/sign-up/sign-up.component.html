@@ -1,0 +1,192 @@
+<div class="row">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmitClick()">
+    <div class="col-md-8 col-xl-6 mx-auto">
+      <div class="card mt-2 ">
+        <div class="card-header bg-secondary text-white">
+          <h4>Sign Up</h4>
+        </div>
+  
+        <div class="card-body">
+          
+  
+            <div class="form-group row mt-2" formGroupName="personName" >
+              <label for="firstName" class="col-md-4 col-form-label">First Name:</label>
+              <div class="col-md-8">
+                <input type="text" name="firstName" id="firstName" placeholder="First Name" class="form-control" formControlName="firstName"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('personName.firstName').invalid && (signUpForm.get('personName.firstName').dirty || signUpForm.get('personName.firstName').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('personName.firstName').invalid && (signUpForm.get('personName.firstName').dirty || signUpForm.get('personName.firstName').touched || signUpForm.submitted) }">
+
+                  <span class="text-danger" *ngIf="signUpForm.get('personName.firstName').invalid && (signUpForm.get('personName.firstName').dirty ||signUpForm.get('personName.firstName').touched||signUpForm.submitted)&&signUpForm.get('personName.firstName').errors?.required">First Name Can Not Null.</span>
+                   <span class="text-danger" *ngIf="signUpForm.get('personName.firstName').invalid && (signUpForm.get('personName.firstName').dirty || signUpForm.get('personName.firstName').touched || signUpForm.submitted) && signUpForm.get('personName.firstName').errors?.minlength">First name should contain at least 3 characters</span>
+
+              </div>
+            </div> 
+            <div class="form-group row mt-2" formGroupName="personName">
+              <label for="lastName" class="col-md-4 col-form-label">Last Name:</label>
+              <div class="col-md-8">
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name" class="form-control" formControlName="lastName"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('personName.lastName').invalid && (signUpForm.get('personName.lastName').dirty || signUpForm.get('personName.lastName').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('personName.lastName').invalid && (signUpForm.get('personName.lastName').dirty || signUpForm.get('personName.lastName').touched || signUpForm.submitted) }">
+                  <span class="text-danger" *ngIf="signUpForm.get('personName.lastName').invalid && (signUpForm.get('personName.lastName').dirty ||signUpForm.get('personName.lastName').touched||signUpForm.submitted)&&signUpForm.get('personName.lastName').errors?.required">last Name Can Not Null.</span>                  
+                  <span class="text-danger" *ngIf="signUpForm.get('personName.lastName').invalid && (signUpForm.get('personName.lastName').dirty || signUpForm.get('personName.lastName').touched||signUpForm.submitted)&&signUpForm.get('personName.lastName').errors?.minlength">First name should contain at least 3 characters.</span>
+              </div>
+            </div>
+  
+            <div class="form-group row mt-2">
+              <label for="email" class="col-md-4 col-form-label">Email:</label>
+              <div class="col-md-8">
+                <input type="text" name="email" id="email" placeholder="Email" class="form-control" formControlName="email"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('email').invalid && (signUpForm.get('email').dirty || signUpForm.get('email').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('email').valid && (signUpForm.get('email').dirty || signUpForm.get('email').touched || signUpForm.submitted) }">
+                  <span class="text-danger" *ngIf="signUpForm.get('email').invalid && (signUpForm.get('email').dirty || signUpForm.get('email').touched||signUpForm.submitted)&&signUpForm.get('email').errors?.required">Email Must Be Required.</span>
+                  <span class="text-danger" *ngIf="signUpForm.get('email').invalid && (signUpForm.get('email').dirty || signUpForm.get('email').touched||signUpForm.submitted)&&signUpForm.get('email').errors?.email">Email Invalid.</span>
+                  <span class="text-danger" *ngIf="signUpForm.get('email').invalid && (signUpForm.get('email').dirty || signUpForm.get('email').touched||signUpForm.submitted)&&signUpForm.get('email').errors?.uniqueEmail">Email Already Exists.</span>
+              </div>
+            </div>
+  
+            <div class="form-group row mt-2">
+              <label for="mobile" class="col-md-4 col-form-label">Mobile:</label>
+              <div class="col-md-8">
+                <input type="text" name="mobile" id="mobile" placeholder="Mobile" class="form-control" formControlName="mobile"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('mobile').invalid && (signUpForm.get('mobile').dirty || signUpForm.get('mobile').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('mobile').valid && (signUpForm.get('mobile').dirty || signUpForm.get('mobile').touched || signUpForm.submitted) }">
+                  <span class="text-danger" *ngIf="signUpForm.get('mobile').invalid && (signUpForm.get('mobile').dirty || signUpForm.get('mobile').touched||signUpForm.submitted)&&signUpForm.get('mobile').errors?.required">Mobile Must Be Required.</span>
+                  <span class="text-danger" *ngIf="signUpForm.get('mobile').invalid && (signUpForm.get('mobile').dirty || signUpForm.get('mobile').touched||signUpForm.submitted)&&signUpForm.get('mobile').errors?.pattern">Please Enter Correct Moble No.</span>
+                </div>
+            </div>
+  
+            <div class="form-group row mt-2">
+              <label for="dateOfBirth" class="col-md-4 col-form-label">Date of Birth:</label>
+              <div class="col-md-8">
+                <input type="date" name="dateOfBirth" id="dateOfBirth" placeholder="Date of Birth" class="form-control" formControlName="dateOfBirth"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('dateOfBirth').invalid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('dateOfBirth').valid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched || signUpForm.submitted) }">
+                  <span class="text-danger" *ngIf="signUpForm.get('dateOfBirth').invalid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched||signUpForm.submitted)&&signUpForm.get('dateOfBirth').errors?.required">Date Of Birth Must Be Required.</span>
+                  <span class="text-danger" *ngIf="signUpForm.get('dateOfBirth').invalid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched||signUpForm.submitted)&&signUpForm.get('dateOfBirth').errors?.minAge">MinimumAge Must Be 18 Years.</span>
+              </div>
+            </div>
+
+            <div class="form-group row mt-2">
+              <label for="password" class="col-md-4 col-form-label">Password:</label>
+              <div class="col-md-8">
+                <input type="password" name="password" id="password" placeholder="password" class="form-control" formControlName="password" minlength="6"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('password').valid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm.submitted) }">
+                  <span class="text-danger" *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched||signUpForm.submitted)&&signUpForm.get('password').errors?.required">Please Enter Password.</span>
+                  <span class="text-danger" *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched||signUpForm.submitted)&&signUpForm.get('password').errors?.minlength">Password At Least 6characters</span>
+              </div>
+            </div>
+
+            <div class="form-group row mt-2">
+              <label for="confirmpassword" class="col-md-4 col-form-label">Confirm Password:</label>
+              <div class="col-md-8">
+                <input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm password" class="form-control" formControlName="confirmpassword"
+                [ngClass]="{
+                  'is-invalid': signUpForm.get('confirmpassword').invalid && (signUpForm.get('confirmpassword').dirty || signUpForm.get('confirmpassword').touched || signUpForm.submitted),
+                  'is-valid': signUpForm.get('confirmpassword').valid && (signUpForm.get('confirmpassword').dirty || signUpForm.get('confirmpassword').touched || signUpForm.submitted) }">
+                  <span class="text-danger" *ngIf="signUpForm.get('confirmpassword').invalid && (signUpForm.get('confirmpassword').dirty || signUpForm.get('confirmpassword').touched||signUpForm.submitted)&&signUpForm.get('confirmpassword').errors?.required">Please Enter Confirm Password.</span>
+                  <span class="text-danger" *ngIf="signUpForm.get('confirmpassword').invalid && (signUpForm.get('confirmpassword').dirty || signUpForm.get('confirmpassword').touched||signUpForm.submitted)&&signUpForm.get('confirmpassword').errors?.compareValidator">Password and Confirm Password Does Not Match.</span>
+              </div>
+            </div>
+
+            <div class="form-group row mt-2">
+                <label for="gender" class="col-md-4 col-form-label">Gender:</label>
+                <div class="col-md-8">
+                    <div class="form-check-label form-check-inline" *ngFor=" let i of genders">
+                        <input type="radio" name="gender" [id]="i" [value]="i" class="form-check-input" formControlName="gender"
+                        [ngClass]="{
+                          'is-invalid': signUpForm.get('gender').invalid && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched || signUpForm.submitted),
+                          'is-valid': signUpForm.get('gender').valid && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched || signUpForm.submitted) }">
+
+                        <label [for]="i" class="form-check-label">{{i}}</label>
+                        
+                    </div>
+                    <span class="text-danger" *ngIf="signUpForm.get('gender').invalid && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched||signUpForm.submitted)&&signUpForm.get('gender').errors?.required">Please Select A gender.</span>
+                    <!-- <div class="form-check-label form-check-inline">
+                        <input type="radio" name="gender" id="female" value="female" class="form-check-input" formControlName="gender">
+                        <label for="female" class="form-check-label">FeMale</label>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="form-group row mt-2">
+                <label for="countryID" class="col-md-4 col-form-label">Country:</label>
+                <div class="col-md-8">
+                    <select name="countryID" id="countryID" class="form-control" formControlName="countryID"
+                    [ngClass]="{
+                      'is-invalid': signUpForm.get('countryID').invalid && (signUpForm.get('countryID').dirty || signUpForm.get('countryID').touched || signUpForm.submitted),
+                      'is-valid': signUpForm.get('countryID').valid && (signUpForm.get('countryID').dirty || signUpForm.get('countryID').touched || signUpForm.submitted) }">
+                        <option value="null">Please Select</option>
+                        <option *ngFor="let i of countries" [value]="i.countryID">
+                          {{i.countryName}}
+                        </option>
+                    </select>
+                    <span class="text-danger" *ngIf="signUpForm.get('countryID').invalid && (signUpForm.get('countryID').dirty || signUpForm.get('countryID').touched||signUpForm.submitted)&&signUpForm.get('countryID').errors?.required">Please Select A Country.</span>
+                </div>
+                
+            </div>
+
+            <div class="form-group row mt-2">
+                <label for="receiveNewsLatter" class="col-md-4 col-form-label"></label>
+                <div class="col-md-8">
+                   <input type="checkbox" name="receiveNewsLatter" id="receiveNewsLatter" value="true"  formControlName="receiveNewsLatter">
+                   &nbsp;<label for="receiveNewsLatter" CLASS="form-check-label"> Receive News Latter</label>
+                </div>
+              </div>
+              <div class="form-group row mt-2">
+                <label for="skills" class="col-md-4 col-form-label">Skills:</label>
+                <div class="col-md-8" formArrayName="skills">
+                  <div *ngFor="let s of signUpForm.get('skills')['controls'];let i=index" [formGroupName]="i" class="row mt-1"> 
+                    <div class="col-5">
+                      <input type="text" name="skillName" id="skiName" placeholder="Skill Name" formControlName="skillName" class="form-control"
+                      [ngClass]="{
+                        'is-invalid': s.get('skillName').invalid && (s.get('skillName').dirty || s.get('skillName').touched || signUpForm.submitted),
+                        'is-valid': s.get('skillName').valid && (s.get('skillName').dirty || s.get('skillName').touched || signUpForm.submitted) }">  
+                    </div>
+                    <div class="col-4">                      
+                      <select name="skillLevel" id="skillLevel" formControlName="skillLevel" class="form-control"
+                        [ngClass]="{
+                          'is-invalid': s.get('skillLevel').invalid && (s.get('skillLevel').dirty || s.get('skillLevel').touched || signUpForm.submitted),
+                          'is-valid': s.get('skillLevel').valid && (s.get('skillLevel').dirty || s.get('skillLevel').touched || signUpForm.submitted) }">  
+                        <option value="null">Please Select</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Expert">Expert</option>
+
+                      </select>
+
+                    </div>
+                    <div class="col-3">
+                      <button class="btn btn-danger" type="button" (click)="OnRemoveSkill(i)">Remove</button>
+                    </div>
+                    
+                    
+                    
+                  </div>
+                    <button class="btn btn-primary" type="button" (click)="OnAddSkill()">
+                      Add Skill
+                    </button>
+                  
+
+                </div>
+
+              </div>
+              
+  
+          {{signUpForm.value | json}} 
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" style="float:right;">Create Account</button>
+        </div>
+        <div class="text-danger">{{registerError}}</div>
+      </div>
+    </div>
+</form>
+  </div>

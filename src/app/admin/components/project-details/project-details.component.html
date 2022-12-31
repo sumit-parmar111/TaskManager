@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-8 col-lg-6 col-xl-5 mx-auto">
+        <div class="card card-primary mt-1">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-11"> 
+                         <div>#{{project.projectID}}</div>
+                         <H5>{{project.projectName}}</H5>
+                    </div>
+            </div>        
+            </div>
+            <div class="card-body">
+                 <table class="table table-borderless table-sm"> 
+                    <tr>
+                        <th>Date Of Start</th>
+                        <td>{{project.dateOfStart}}</td>
+                    </tr>
+                    <tr>
+                        <th>Team Size</th>
+                        <td>{{project.teamSize|numberToWords}}</td>
+                    </tr>
+                    <tr>
+                        <th>Client Location</th>
+                        <td>{{project.clientLocation.clientLocationName}}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{project.status}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer" style="float:left;">        
+                <a class="btn btn-primary" [routerLink]="['/admin','projects']">Back</a>
+        
+                <!-- <a class="btn btn-primary" [routerLink]=" ['/projects','view',project.projectID] ">Learn More</a> -->
+            </div>
+        
+        </div>
+    </div>
+
+</div>
+
+
+
+

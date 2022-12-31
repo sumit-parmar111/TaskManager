@@ -1,0 +1,47 @@
+<form>
+    <div class="row">
+        <div class="col-lg-6 col-xl-5 col-md-9 mx-auto">
+            <div class="card mt-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3>LogIn</h3>
+                    <div appAlert [error]="loginError" *ngIf="loginError">
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group form-row">
+                        <label for="UserName" class="col-md-4 col-form-label">
+                            UserName
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="UserName" [(ngModel)]="loginViewModel.UserName"
+                            name="UserName" autofocus="autofocus"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="Password" class="col-md-4 col-form-label">
+                            Password
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Password" [(ngModel)]="loginViewModel.Password"
+                            name="Password"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <button class="btn btn-primary" style="float:right; " (click)="onLoginClick($event)">Log In </button>
+                </div>
+                <!-- <div *appRepeater="5;let i">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" [href]="'#collapse'+i" role="button">Show Details</a>
+                    <div class="collapse" [id]="'collapse'+i">
+                        <div class="card card-body">
+                            Actual Details Here
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+        </div>
+
+    </div>
+</form>
